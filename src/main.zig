@@ -1,17 +1,17 @@
 const std = @import("std");
 const microzig = @import("microzig");
-const stm32 = microzig.hal;
+const hal = microzig.hal;
 
-const LED_PIN = stm32.parse_pin("PE8");
+const LED_PIN = hal.parse_pin("PE8");
 
 pub fn main() !void {
-    stm32.gpio.set_output(LED_PIN);
+    hal.gpio.set_output(LED_PIN);
 
     while (true) {
-        stm32.gpio.write(LED_PIN, .high);
+        hal.gpio.write(LED_PIN, .high);
         delay_ms(1000);
 
-        stm32.gpio.write(LED_PIN, .low);
+        microzig.gpio.write(LED_PIN, .low);
         delay_ms(1000);
     }
 }
